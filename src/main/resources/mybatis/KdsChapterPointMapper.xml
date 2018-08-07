@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.alertcode.trainhigh.mapper.KdsChapterPointMapper">
+  <resultMap id="BaseResultMap" type="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+    <result column="parent_id" property="parentId" jdbcType="BIGINT"/>
+    <result column="chapter_id" property="chapterId" jdbcType="BIGINT"/>
+    <result column="point_no" property="pointNo" jdbcType="VARCHAR"/>
+    <result column="point_name" property="pointName" jdbcType="VARCHAR"/>
+    <result column="status" property="status" jdbcType="INTEGER"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    <result column="is_delete" property="isDelete" jdbcType="TINYINT"/>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="top.alertcode.trainhigh.common.domian.KdsChapterPoint"
+    extends="BaseResultMap">
+    <result column="point_desc" property="pointDesc" jdbcType="LONGVARCHAR"/>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, parent_id, chapter_id, point_no, point_name, status, create_time, update_time, 
+    is_delete
+  </sql>
+  <sql id="Blob_Column_List">
+    point_desc
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List"/>
+    from kds_chapter_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from kds_chapter_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List"/>
+    ,
+    <include refid="Blob_Column_List"/>
+    from kds_chapter_point
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from kds_chapter_point
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
+    delete from kds_chapter_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    insert into kds_chapter_point (id, parent_id, chapter_id, 
+      point_no, point_name, status, 
+      create_time, update_time, is_delete, 
+      point_desc)
+    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}, 
+      #{pointNo,jdbcType=VARCHAR}, #{pointName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}, 
+      #{pointDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    insert into kds_chapter_point
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+      <if test="pointNo != null">
+        point_no,
+      </if>
+      <if test="pointName != null">
+        point_name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="pointDesc != null">
+        point_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="pointNo != null">
+        #{pointNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pointName != null">
+        #{pointName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="pointDesc != null">
+        #{pointDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample"
+    resultType="java.lang.Integer">
+    select count(*) from kds_chapter_point
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update kds_chapter_point
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.chapterId != null">
+        chapter_id = #{record.chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="record.pointNo != null">
+        point_no = #{record.pointNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pointName != null">
+        point_name = #{record.pointName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isDelete != null">
+        is_delete = #{record.isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="record.pointDesc != null">
+        point_desc = #{record.pointDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update kds_chapter_point
+    set id = #{record.id,jdbcType=BIGINT},
+    parent_id = #{record.parentId,jdbcType=BIGINT},
+    chapter_id = #{record.chapterId,jdbcType=BIGINT},
+    point_no = #{record.pointNo,jdbcType=VARCHAR},
+    point_name = #{record.pointName,jdbcType=VARCHAR},
+    status = #{record.status,jdbcType=INTEGER},
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+    is_delete = #{record.isDelete,jdbcType=TINYINT},
+    point_desc = #{record.pointDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update kds_chapter_point
+    set id = #{record.id,jdbcType=BIGINT},
+    parent_id = #{record.parentId,jdbcType=BIGINT},
+    chapter_id = #{record.chapterId,jdbcType=BIGINT},
+    point_no = #{record.pointNo,jdbcType=VARCHAR},
+    point_name = #{record.pointName,jdbcType=VARCHAR},
+    status = #{record.status,jdbcType=INTEGER},
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+    is_delete = #{record.isDelete,jdbcType=TINYINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    update kds_chapter_point
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=BIGINT},
+      </if>
+      <if test="pointNo != null">
+        point_no = #{pointNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pointName != null">
+        point_name = #{pointName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="pointDesc != null">
+        point_desc = #{pointDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    update kds_chapter_point
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      chapter_id = #{chapterId,jdbcType=BIGINT},
+      point_no = #{pointNo,jdbcType=VARCHAR},
+      point_name = #{pointName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      point_desc = #{pointDesc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    update kds_chapter_point
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      chapter_id = #{chapterId,jdbcType=BIGINT},
+      point_no = #{pointNo,jdbcType=VARCHAR},
+      point_name = #{pointName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
