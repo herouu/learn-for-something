@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.alertcode.trainhigh.mapper.KdsQuestionChapterMapper">
+  <resultMap id="BaseResultMap" type="top.alertcode.trainhigh.common.domian.KdsQuestionChapter">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+    <result column="question_id" property="questionId" jdbcType="BIGINT"/>
+    <result column="chapter_id" property="chapterId" jdbcType="BIGINT"/>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" suffix=")" prefixOverrides="and">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                    separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, question_id, chapter_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapterExample">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List"/>
+    from kds_question_chapter
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List"/>
+    from kds_question_chapter
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from kds_question_chapter
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapterExample">
+    delete from kds_question_chapter
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </delete>
+  <insert id="insert" parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapter">
+    insert into kds_question_chapter (id, question_id, chapter_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{questionId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapter">
+    insert into kds_question_chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="questionId != null">
+        question_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="questionId != null">
+        #{questionId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapterExample"
+    resultType="java.lang.Integer">
+    select count(*) from kds_question_chapter
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause"/>
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update kds_question_chapter
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.questionId != null">
+        question_id = #{record.questionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.chapterId != null">
+        chapter_id = #{record.chapterId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update kds_question_chapter
+    set id = #{record.id,jdbcType=BIGINT},
+    question_id = #{record.questionId,jdbcType=BIGINT},
+    chapter_id = #{record.chapterId,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause"/>
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapter">
+    update kds_question_chapter
+    <set>
+      <if test="questionId != null">
+        question_id = #{questionId,jdbcType=BIGINT},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey"
+    parameterType="top.alertcode.trainhigh.common.domian.KdsQuestionChapter">
+    update kds_question_chapter
+    set question_id = #{questionId,jdbcType=BIGINT},
+      chapter_id = #{chapterId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

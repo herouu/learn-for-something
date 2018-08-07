@@ -1,0 +1,70 @@
+server:
+    port: 8080
+    tomcat:
+      uri-encoding: UTF-8
+spring:
+      mvc:
+          favicon:
+            enabled: true
+      # 设置字符编码
+      http:
+          encoding:
+            charset: utf-8
+            force: true
+            enabled: true
+            uri-encoding: utf-8
+      #配置启用环境：dev-开发环境 test-测试环境 prd-生产环境
+      profiles:
+        active: dev
+      aop:
+        auto: false
+
+      # druid监控
+      datasource:
+        druid:
+          web-stat-filter:
+            enabled: true
+            url-pattern: /*
+            exclusions: /druid/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid
+            session-stat-enable: true
+            session-stat-max-count: 1000
+            profile-enable: true
+          stat-view-servlet:
+            enabled: true
+            url-pattern: /druid/*
+            reset-enable: false
+            login-username: druid
+            login-password: druid
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+
+---
+spring:
+  profiles: dev
+  # 数据源配置
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/kds_question_bank?useUnicode=true&amp;characterEncoding=utf8
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      # 连接池配置
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      # 监控配置
+#redis 缓存配置
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        min-idle: 0
+        max-active: -1
+        max-idle: 8
+        timeout: 0
+server:
+  port: 8088
+
