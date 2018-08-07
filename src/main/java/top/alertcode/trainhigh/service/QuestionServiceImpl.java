@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.alertcode.trainhigh.common.domian.KdsQuestionChapter;
-import top.alertcode.trainhigh.mapper.KdsQuestionChapterMapper;
+import top.alertcode.trainhigh.common.domian.KdsChapterPoint;
+import top.alertcode.trainhigh.mapper.KdsChapterPointMapper;
 
 /**
  * Question service类.
@@ -18,7 +18,7 @@ import top.alertcode.trainhigh.mapper.KdsQuestionChapterMapper;
 public class QuestionServiceImpl implements QuestionService {
 
   @Autowired
-  private KdsQuestionChapterMapper kdsQuestionChapterMapper;
+  private KdsChapterPointMapper kdsChapterPoint;
 
   @Override
   public void insertSqlQuestion() {
@@ -35,10 +35,10 @@ public class QuestionServiceImpl implements QuestionService {
   }
 
   @Override
-  public List<KdsQuestionChapter> querySqlQuestion(long id) {
-    ArrayList<KdsQuestionChapter> objects = new ArrayList<>();
-    KdsQuestionChapter kdsQuestionChapter = kdsQuestionChapterMapper.selectByPrimaryKey(id);
-    objects.add(kdsQuestionChapter);
+  public List<KdsChapterPoint> querySqlQuestion(long id) {
+    ArrayList<KdsChapterPoint> objects = new ArrayList<>();
+    KdsChapterPoint KdsChapterPoint = kdsChapterPoint.selectByPrimaryKey(id);
+    objects.add(KdsChapterPoint);
     return objects;
   }
 
@@ -58,7 +58,7 @@ public class QuestionServiceImpl implements QuestionService {
   }
 
   @Override
-  public List<KdsQuestionChapter> queryRedisQuestion() {
+  public List<KdsChapterPoint> queryRedisQuestion() {
     return null;
   }
 }

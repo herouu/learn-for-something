@@ -18,8 +18,8 @@
     </commentGenerator>
 
     <!--数据库链接地址账号密码-->
-    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-      connectionURL="jdbc:mysql://localhost:3306/kds_question_bank" userId="root" password="123456">
+    <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/kds_question_bank"
+      driverClass="com.mysql.jdbc.Driver" password="123456" userId="root">
     </jdbcConnection>
     <javaTypeResolver>
       <property name="forceBigDecimals" value="false"/>
@@ -38,60 +38,15 @@
     </sqlMapGenerator>
 
     <!--生成Dao类存放位置-->
-    <javaClientGenerator type="XMLMAPPER" targetPackage="top.alertcode.trainhigh.mapper"
-      targetProject="src/main/java">
+    <javaClientGenerator targetPackage="top.alertcode.trainhigh.mapper"
+      targetProject="src/main/java"
+      type="XMLMAPPER">
       <property name="enableSubPackages" value="true"/>
     </javaClientGenerator>
 
     <!--生成对应表及类名-->
-    <!--    <table tableName="kds_book" domainObjectName="KdsBook" enableCountByExample="false"
-          enableUpdateByExample="false" enableDeleteByExample="false"
-          enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        <table tableName="kds_book_edition" domainObjectName="KdsBookEdition"
-          enableCountByExample="false"
-          enableUpdateByExample="false" enableDeleteByExample="false"
-          enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        <table tableName="kds_chapter" domainObjectName="KdsChapter" enableCountByExample="false"
-          enableUpdateByExample="false" enableDeleteByExample="false"
-          enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        <table tableName="kds_chapter_point" domainObjectName="KdsChapterPoint"
-          enableCountByExample="false"
-          enableUpdateByExample="false" enableDeleteByExample="false"
-          enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        <table tableName="kds_point" domainObjectName="KdsPoint" enableCountByExample="false"
-          enableUpdateByExample="false" enableDeleteByExample="false"
-          enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        -->
-    <table tableName="kds_question_chapter" domainObjectName="KdsQuestionChapter"></table>
-    <!-- <table tableName="kds_question_point" domainObjectName="KdsQuestionPoint"
-      enableCountByExample="false"
-      enableUpdateByExample="false" enableDeleteByExample="false"
-      enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table tableName="kds_question_type" domainObjectName="KdsQuestionType"
-      enableCountByExample="false"
-      enableUpdateByExample="false" enableDeleteByExample="false"
-      enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table tableName="kds_subject" domainObjectName="KdsSubject" enableCountByExample="false"
-      enableUpdateByExample="false" enableDeleteByExample="false"
-      enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>-->
 
-    <!-- <table tableName="kds_question" domainObjectName="KdsQuestion" enableCountByExample="false"
-       enableUpdateByExample="false" enableDeleteByExample="false"
-       enableSelectByExample="false" selectByExampleQueryId="false">
-       <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
-       <columnOverride column="analyse" javaType="java.lang.String" jdbcType="VARCHAR"/>
-       <columnOverride column="method" javaType="java.lang.String" jdbcType="VARCHAR"/>
-       <columnOverride column="discuss" javaType="java.lang.String" jdbcType="VARCHAR"/>
-       <columnOverride column="options" javaType="java.lang.String" jdbcType="VARCHAR"/>
-       <columnOverride column="answers" javaType="java.lang.String" jdbcType="VARCHAR"/>
-     </table>-->
+    <table domainObjectName="KdsChapterPoint" tableName="kds_chapter_point"></table>
+
   </context>
 </generatorConfiguration>

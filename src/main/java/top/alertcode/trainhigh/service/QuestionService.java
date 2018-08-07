@@ -1,7 +1,7 @@
 package top.alertcode.trainhigh.service;
 
 import java.util.List;
-import top.alertcode.trainhigh.common.domian.KdsQuestionChapter;
+import top.alertcode.trainhigh.common.domian.KdsChapterPoint;
 
 /**
  * Question service接口.
@@ -32,7 +32,7 @@ public interface QuestionService {
    *
    * @return list
    */
-  List<KdsQuestionChapter> querySqlQuestion(long id);
+  List<KdsChapterPoint> querySqlQuestion(long id);
 
   /**
    * Insert redis question.
@@ -54,6 +54,6 @@ public interface QuestionService {
    *
    * @return list
    */
-  List<KdsQuestionChapter> queryRedisQuestion();
+  List<KdsChapterPoint> queryRedisQuestion();
 
 }
