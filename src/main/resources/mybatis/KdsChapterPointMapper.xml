@@ -17,6 +17,7 @@
     extends="BaseResultMap">
     <result column="point_desc" property="pointDesc" jdbcType="LONGVARCHAR"/>
   </resultMap>
+  <cache></cache>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

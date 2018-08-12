@@ -26,7 +26,7 @@ public class QuestionController {
   @GetMapping("querySqlQuestion")
   public BaseResponse querySqlQuestion(int id) {
     List<KdsChapterPoint> kdsChapterPoints = questionService.querySqlQuestion(id);
-    log.info(JSON.toJSONString(kdsChapterPoints));
+//    log.info(JSON.toJSONString(kdsChapterPoints));
     return BaseResponse.success(kdsChapterPoints);
   }
 }

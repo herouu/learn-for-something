@@ -16,7 +16,7 @@
       <property name="suppressAllComments" value="true"/>
       <property name="addRemarkComments" value="true"/>
     </commentGenerator>
-
+  
     <!--数据库链接地址账号密码-->
     <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/kds_question_bank"
       driverClass="com.mysql.jdbc.Driver" password="123456" userId="root">

@@ -1,8 +1,9 @@
 package top.alertcode.trainhigh.common.domian;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class KdsChapterPoint {
+public class KdsChapterPoint implements Serializable {
 
   private Long id;
 
