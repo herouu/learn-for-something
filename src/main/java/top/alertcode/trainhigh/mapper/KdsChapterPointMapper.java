@@ -1,6 +1,7 @@
 package top.alertcode.trainhigh.mapper;
 
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import top.alertcode.trainhigh.common.domian.KdsChapterPoint;
 import top.alertcode.trainhigh.common.domian.KdsChapterPointExample;
@@ -19,7 +20,7 @@ public interface KdsChapterPointMapper {
 
   List<KdsChapterPoint> selectByExampleWithBLOBs(KdsChapterPointExample example);
 
-  List<KdsChapterPoint> selectByExample(KdsChapterPointExample example);
+  List<Map<Object,Object>> selectByExample(KdsChapterPointExample example);
 
   KdsChapterPoint selectByPrimaryKey(Long id);
 

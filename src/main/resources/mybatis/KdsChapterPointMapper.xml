@@ -102,7 +102,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap"
+  <select id="selectByExample" resultType="java.util.Map"
     parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
     select
     <if test="distinct">

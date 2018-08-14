@@ -1,6 +1,7 @@
 package top.alertcode.trainhigh.service;
 
 import java.util.List;
+import java.util.Map;
 import top.alertcode.trainhigh.common.domian.KdsChapterPoint;
 
 /**
@@ -34,6 +35,8 @@ public interface QuestionService {
    */
   List<KdsChapterPoint> querySqlQuestion(long id);
 
+  List<Map<Object, Object>> querySqlQuestions();
+
   /**
    * Insert redis question.
    */
@@ -54,6 +57,6 @@ public interface QuestionService {
    *
    * @return list
    */
-  List<KdsChapterPoint> queryRedisQuestion();
+  Map queryRedisQuestion(Integer id);
 
 }

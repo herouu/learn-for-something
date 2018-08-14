@@ -2,7 +2,9 @@ package top.alertcode.trainhigh.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import top.alertcode.trainhigh.common.domian.KdsChapterPoint;
 import top.alertcode.trainhigh.mapper.KdsChapterPointMapper;
@@ -19,6 +21,9 @@ public class QuestionServiceImpl implements QuestionService {
 
   @Autowired
   private KdsChapterPointMapper kdsChapterPoint;
+
+  @Autowired
+  private RedisTemplate redisTemplate;
 
   @Override
   public void insertSqlQuestion() {
@@ -43,6 +48,11 @@ public class QuestionServiceImpl implements QuestionService {
   }
 
   @Override
+  public List<Map<Object, Object>> querySqlQuestions() {
+    return kdsChapterPoint.selectByExample(null);
+  }
+
+  @Override
   public void insertRedisQuestion() {
 
   }
@@ -58,7 +68,8 @@ public class QuestionServiceImpl implements QuestionService {
   }
 
   @Override
-  public List<KdsChapterPoint> queryRedisQuestion() {
-    return null;
+  public Map queryRedisQuestion(Integer id) {
+    Map entries = redisTemplate.opsForHash().entries(String.valueOf(id));
+    return entries;
   }
 }

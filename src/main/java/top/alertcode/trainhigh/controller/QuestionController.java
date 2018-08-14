@@ -1,7 +1,7 @@
 package top.alertcode.trainhigh.controller;
 
-import com.alibaba.fastjson.JSON;
 import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,5 +28,12 @@ public class QuestionController {
     List<KdsChapterPoint> kdsChapterPoints = questionService.querySqlQuestion(id);
 //    log.info(JSON.toJSONString(kdsChapterPoints));
     return BaseResponse.success(kdsChapterPoints);
+  }
+
+  @GetMapping("queryRedisQuestion")
+  public BaseResponse queryRedisQuestion(int id) {
+    Map map = questionService.queryRedisQuestion(id);
+//    log.info(JSON.toJSONString(kdsChapterPoints));
+    return BaseResponse.success(map);
   }
 }
