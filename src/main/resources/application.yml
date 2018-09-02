@@ -44,7 +44,7 @@ spring:
   # 数据源配置
   datasource:
     druid:
-      url: jdbc:mysql://192.168.1.102:3306/kds_question_bank?useUnicode=true&amp;characterEncoding=utf8
+      url: jdbc:mysql://localhost:3306/kds_question_bank?useUnicode=true&amp;characterEncoding=utf8
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
@@ -63,7 +63,7 @@ spring:
       pool:
         min-idle: 0
         max-active: -1
-        max-idle: 8
+        max-idle: 1000
         timeout: 0
 server:
   port: 8088
