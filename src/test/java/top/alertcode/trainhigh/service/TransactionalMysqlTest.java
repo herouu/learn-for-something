@@ -3,7 +3,6 @@ package top.alertcode.trainhigh.service;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import top.alertcode.trainhigh.TrainHighApplicationTests;
 
 /**
@@ -12,7 +11,7 @@ import top.alertcode.trainhigh.TrainHighApplicationTests;
  * @copyright alertcode.top
  */
 @Slf4j
-public class TranscationMysqlTest extends TrainHighApplicationTests {
+public class TransactionalMysqlTest extends TrainHighApplicationTests {
 
   @Autowired
   TranscationService transcationService;

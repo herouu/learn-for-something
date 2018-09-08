@@ -3,10 +3,12 @@ package top.alertcode.trainhigh.service;
 import com.alibaba.fastjson.JSON;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -43,6 +45,16 @@ public class QuestionServiceTest extends TrainHighApplicationTests {
   public void getHash(){
     Map keys = redisTemplate.opsForHash().entries("329507");
     System.out.println(JSON.toJSONString(keys));
+  }
+
+  @Rule
+  public ContiPerfRule i = new ContiPerfRule();
+  @Test
+  @PerfTest(invocations = 100,threads = 10)
+  public void testContiPerf() {
+    List<KdsChapterPoint> kdsChapterPoints = questionService.querySqlQuestion(329503L);
+    //断言 是否和预期一致
+    System.out.println(JSON.toJSONString(kdsChapterPoints));
   }
 
 
