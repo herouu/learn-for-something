@@ -14,37 +14,37 @@ import top.alertcode.trainhigh.TrainHighApplicationTests;
 public class TransactionalMysqlTest extends TrainHighApplicationTests {
 
   @Autowired
-  TranscationService transcationService;
+  TransactionalService transactionalService;
 
-
+  //脏读
   @Test
   public void dirtyRead() {
-    transcationService.listForDirtyRead();
+    transactionalService.listForDirtyRead();
   }
 
   @Test
   public void dirtyReadinsert() {
-    transcationService.insertForDirtyReadAndIllusion();
+    transactionalService.insertForDirtyReadAndIllusion();
   }
 
   //不可重复读
   @Test
   public void reread() {
-    transcationService.listForIllusionRead();
+    transactionalService.listForIllusionRead();
   }
 
   @Test
   public void updateKdsPoint() {
-    transcationService.updateForNoRepeat();
+    transactionalService.updateForNoRepeat();
   }
 
   //幻读测试
   @Test
   public void listForPhantomRead() {
-    transcationService.listForPhantomRead();
+    transactionalService.listForPhantomRead();
   }
   @Test
   public void insertForPhantomRead() {
-    transcationService.insertFoPhantomReadAndIllusion();
+    transactionalService.insertFoPhantomReadAndIllusion();
   }
 }
