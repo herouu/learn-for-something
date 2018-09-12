@@ -404,7 +404,7 @@ class ThreadFuture {
  * @date 20180910 15:52:18
  */
 @Slf4j
-class ForkJoin {
+class ThreadForkJoin {
 
   /**
    * Test.
