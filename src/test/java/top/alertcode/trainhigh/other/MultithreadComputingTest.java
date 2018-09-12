@@ -12,7 +12,7 @@ public class MultithreadComputingTest {
 
   @Test
   public void testForkJoin() throws Exception {
-    ForkJoin.test();
+    ThreadForkJoin.test();
   }
 
   @Test
