@@ -1,4 +1,4 @@
-package top.alertcode.trainhigh.netty.tcppackage;
+package top.alertcode.trainhigh.netty.lineBased;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
