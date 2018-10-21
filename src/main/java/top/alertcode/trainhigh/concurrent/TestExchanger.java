@@ -28,7 +28,6 @@ public class TestExchanger {
       String b = "b";
       try {
         //输出‘a’
-
         String exchange = ex.exchange(b);
         //进行校对工作
         System.out.println(exchange.equals(b));
