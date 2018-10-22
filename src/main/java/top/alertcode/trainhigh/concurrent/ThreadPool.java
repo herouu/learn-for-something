@@ -1,37 +1,26 @@
 package top.alertcode.trainhigh.concurrent;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
 /**
+ * 实现自定义线程池
+ *
  * @author alertcode
- * @date 2018-10-21
+ * @date 2018-10-23
  * @copyright alertcode.top
  */
-public class ThreadPool {
+public interface ThreadPool<Job extends Runnable> {
 
-  static volatile int i = 0;
-  private static Object lock = new Object();
-  private static CountDownLatch end=new CountDownLatch(1);
-  public static void main(String[] args) throws InterruptedException {
+  // 执行一个job,这个job需要实现runnable
+  void execute(Job job);
 
-    ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20, 1, TimeUnit.DAYS,
-        new LinkedBlockingQueue<>());
-    threadPoolExecutor.execute(new Runnable() {
-      @Override
-      public void run() {
-        while (i < 100) {
-          //synchronized (lock) {
-            i++;
-          //}
-          System.out.println(i);
-        }
-        end.countDown();
-      }
-    });
-    end.await();
-    threadPoolExecutor.shutdown();
-  }
+  //关闭线程池
+  void shutdown();
+
+  // 增加工作者线程
+  void addWorkers(int num);
+
+  //减少工作者线程
+  void removeWorker(int num);
+
+  //等待执行的任务数量
+  int getJobSize();
 }
