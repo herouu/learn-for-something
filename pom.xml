@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>top.alertcode</groupId>
-  <artifactId>train-high</artifactId>
+  <artifactId>herouu-learn-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>train-high</name>
-  <description>高并发实验，qps 争取达到万级</description>
+  <name>herouu-learn-demo</name>
+  <description></description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -96,15 +96,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <!--springboot监控-->
-   <!-- <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>-->
- <!--   <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>-->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -126,15 +117,10 @@
       <version>2.3.4</version>
       <scope>test</scope>
     </dependency>
-    <!--	<dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-spring-boot-starter</artifactId>
-        <version>2.20.2</version>
-      </dependency>-->
     <dependency>
       <groupId>io.netty</groupId>
       <artifactId>netty-all</artifactId>
-      <version>4.1.29.Final</version>
+      <version>4.1.56.Final</version>
     </dependency>
     <dependency>
       <groupId>com.spring4all</groupId>
