@@ -11,18 +11,18 @@ public class AddMain {
     @SneakyThrows
     public static void main(String[] args) {
         //实现多线程加法求和
-        // Sum(AddConstant.N);
-        // threadPool
-        // multiSum(AddConstant.N, THREAD_NUM);
-        // CountDownLatch
+        Sum(AddConstant.N);
+        // threadPool ok
+        multiSum(AddConstant.N, THREAD_NUM);
+        // CountDownLatch ok
         CountDownLatchAdd.countDownLatchSum(AddConstant.N, THREAD_NUM);
-        // cyclicBarrierSum
+        // cyclicBarrierSum ok
         CyclicBarrierAdd.cyclicBarrierSum(AddConstant.N, THREAD_NUM);
-        // todo:cyclicBarrierSum2  此方法会造成死锁，原因不详，需要进行排查
-        // CyclicBarrierAdd.cyclicBarrierSum2(AddConstant.N, THREAD_NUM);
-        // forkJoin
-        // ForkJoinAdd.forkJoinSum(AddConstant.N, THREAD_NUM, 10000);
-        // java8并行流
+        // cyclicBarrierSum2 ok
+        CyclicBarrierAdd.cyclicBarrierSum2(AddConstant.N, THREAD_NUM);
+        // forkJoin ok
+        ForkJoinAdd.forkJoinSum(AddConstant.N, THREAD_NUM, 10000);
+        // java8并行流 ok
         ParallelStreamAdd.parallelSum(AddConstant.N);
     }
 }

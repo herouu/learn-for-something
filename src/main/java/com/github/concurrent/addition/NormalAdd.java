@@ -9,7 +9,7 @@ public class NormalAdd {
         System.out.println("串行计算开始-----------------------");
         Instant start = Instant.now();
         long sum = 0;
-        for (int i = 1; i <= N; i++) {
+        for (long i = 1; i <= N; i++) {
             sum += i;
         }
         Instant end = Instant.now();

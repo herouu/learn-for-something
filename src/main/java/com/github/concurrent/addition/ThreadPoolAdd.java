@@ -50,5 +50,6 @@ public class ThreadPoolAdd {
         long end1 = System.currentTimeMillis();
         System.out.println("并行计算耗时：" + (end1 - start1) + " ms");
         System.out.println("并行计算的结果：" + sum);
+        executor.shutdown();
     }
 }
