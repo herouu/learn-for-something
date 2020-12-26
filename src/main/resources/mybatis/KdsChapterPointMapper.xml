@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="top.alertcode.trainhigh.mapper.KdsChapterPointMapper">
-  <resultMap id="BaseResultMap" type="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+<mapper namespace="com.github.herouu.trainhigh.mapper.KdsChapterPointMapper">
+  <resultMap id="BaseResultMap" type="com.github.herouu.trainhigh.common.domian.KdsChapterPoint">
     <id column="id" property="id" jdbcType="BIGINT"/>
     <result column="parent_id" property="parentId" jdbcType="BIGINT"/>
     <result column="chapter_id" property="chapterId" jdbcType="BIGINT"/>
@@ -13,7 +13,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
     <result column="is_delete" property="isDelete" jdbcType="TINYINT"/>
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="top.alertcode.trainhigh.common.domian.KdsChapterPoint"
+  <resultMap id="ResultMapWithBLOBs" type="com.github.herouu.trainhigh.common.domian.KdsChapterPoint"
     extends="BaseResultMap">
     <result column="point_desc" property="pointDesc" jdbcType="LONGVARCHAR"/>
   </resultMap>
@@ -79,14 +79,14 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, parent_id, chapter_id, point_no, point_name, status, create_time, update_time, 
+    id, parent_id, chapter_id, point_no, point_name, status, create_time, update_time,
     is_delete
   </sql>
   <sql id="Blob_Column_List">
     point_desc
   </sql>
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPointExample">
     select
     <if test="distinct">
       distinct
@@ -103,7 +103,7 @@
     </if>
   </select>
   <select id="selectByExample" resultType="java.util.Map"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPointExample">
     select
     <if test="distinct">
       distinct
@@ -130,24 +130,24 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPointExample">
     delete from kds_chapter_point
     <if test="_parameter != null">
       <include refid="Example_Where_Clause"/>
     </if>
   </delete>
-  <insert id="insert" parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
-    insert into kds_chapter_point (id, parent_id, chapter_id, 
-      point_no, point_name, status, 
-      create_time, update_time, is_delete, 
+  <insert id="insert" parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPoint">
+    insert into kds_chapter_point (id, parent_id, chapter_id,
+      point_no, point_name, status,
+      create_time, update_time, is_delete,
       point_desc)
-    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT}, 
-      #{pointNo,jdbcType=VARCHAR}, #{pointName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT}, 
+    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{chapterId,jdbcType=BIGINT},
+      #{pointNo,jdbcType=VARCHAR}, #{pointName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=TINYINT},
       #{pointDesc,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPoint">
     insert into kds_chapter_point
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -215,7 +215,7 @@
     </trim>
   </insert>
   <select id="countByExample"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPointExample"
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPointExample"
     resultType="java.lang.Integer">
     select count(*) from kds_chapter_point
     <if test="_parameter != null">
@@ -292,7 +292,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPoint">
     update kds_chapter_point
     <set>
       <if test="parentId != null">
@@ -326,7 +326,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPoint">
     update kds_chapter_point
     set parent_id = #{parentId,jdbcType=BIGINT},
       chapter_id = #{chapterId,jdbcType=BIGINT},
@@ -340,7 +340,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey"
-    parameterType="top.alertcode.trainhigh.common.domian.KdsChapterPoint">
+    parameterType="com.github.herouu.trainhigh.common.domian.KdsChapterPoint">
     update kds_chapter_point
     set parent_id = #{parentId,jdbcType=BIGINT},
       chapter_id = #{chapterId,jdbcType=BIGINT},
