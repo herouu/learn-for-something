@@ -2,7 +2,8 @@ package com.github.herouu.concurrent.communication;
 
 public class NonVolatileDemo {
     // 只考虑可见性，不考虑原子的性的操作,状态位
-    public static volatile boolean stop = false;//任务是否停止,普通变量
+    // public static volatile boolean stop = false;//任务是否停止,普通变量
+    public static boolean stop = false;//任务是否停止,普通变量
 
     public static void main(String[] args) throws Exception {
         Thread thread1 = new Thread(() -> {
