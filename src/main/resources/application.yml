@@ -40,13 +40,12 @@ mybatis:
 
 ---
 spring:
-  profiles: dev
   # 数据源配置
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/kds_question_bank?useUnicode=true&amp;characterEncoding=utf8
+      url: jdbc:mysql://101.200.79.90:3306/rouyi
       username: root
-      password: 123456
+      password: adelina
       driver-class-name: com.mysql.jdbc.Driver
       # 连接池配置
       initial-size: 5
@@ -65,6 +64,9 @@ spring:
         max-active: -1
         max-idle: 1000
         timeout: 0
+  config:
+    activate:
+      on-profile:
 server:
   port: 8088
   tomcat:
